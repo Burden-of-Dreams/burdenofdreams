@@ -1,16 +1,39 @@
 package com.banditdev.burdenofdreams.model.system;
 
-import java.util.Date;
 
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.Audited;
+import org.springframework.data.annotation.Id;
+
+import java.util.Date;
+import java.util.List;
+
+
+@Entity
+@Audited.Table(name = "Booking")
 public class Booking {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nameOfCustomer;
     private String phoneNumber;
     private String emailOfCustomer;
-    private Session sessions;
+
+@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
+    private List<Session> sessions;
     private Date date;
     private double totalPrice;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public long getId() {
         return id;
@@ -44,11 +67,11 @@ public class Booking {
         this.emailOfCustomer = emailOfCustomer;
     }
 
-    public Session getSessions() {
+    public List<Session> getSessions() {
         return sessions;
     }
 
-    public void setSessions(Session sessions) {
+    public void setSessions(List<Session> sessions) {
         this.sessions = sessions;
     }
 
