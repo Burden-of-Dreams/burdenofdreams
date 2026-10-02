@@ -3,7 +3,9 @@ package com.banditdev.burdenofdreams.model.system;
 
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Equipment {
@@ -15,13 +17,17 @@ public class Equipment {
     private int number;
     private String name;
 
+    @ManyToMany(mappedBy = "reservedEquipment")
+    private List<Session> sessions = new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Equipment(Long id, int number, String name, Status status) {
+    public Equipment(Long id, int number, String name, List<Session> sessions, Status status) {
         this.id = id;
         this.number = number;
         this.name = name;
+        this.sessions = sessions;
         this.status = status;
     }
 

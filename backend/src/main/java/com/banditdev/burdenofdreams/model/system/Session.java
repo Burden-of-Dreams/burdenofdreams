@@ -3,6 +3,8 @@ package com.banditdev.burdenofdreams.model.system;
 import jakarta.persistence.*;
 
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -20,17 +22,17 @@ public class Session {
 
     private int amountOfCustomers;
 
-    @ManyToMany(mappedBy = "")
+    @ManyToMany
     private List<Equipment> reservedEquipment = new ArrayList<>();
 
-    private Date dateOfActivity;
-    private Time startOfSession;
-    private Time endOfSession;
+    private LocalDate dateOfActivity;
+    private LocalTime startOfSession;
+    private LocalTime endOfSession;
 
 
     public Session(Long id, Activity typeOfActivity, int amountOfCustomers,
-                   List<Equipment> reservedEquipment, Date dateOfActivity,
-                   Time startOfSession, Time endOfSession) {
+                   List<Equipment> reservedEquipment, LocalDate dateOfActivity,
+                   LocalTime startOfSession, LocalTime endOfSession) {
         this.id = id;
         this.typeOfActivity = typeOfActivity;
         this.amountOfCustomers = amountOfCustomers;
@@ -71,27 +73,27 @@ public class Session {
         this.reservedEquipment = reservedEquipment;
     }
 
-    public Date getDateOfActivity() {
+    public LocalDate getDateOfActivity() {
         return dateOfActivity;
     }
 
-    public void setDateOfActivity(Date dateOfActivity) {
+    public void setDateOfActivity(LocalDate dateOfActivity) {
         this.dateOfActivity = dateOfActivity;
     }
 
-    public Time getStartOfSession() {
+    public LocalTime getStartOfSession() {
         return startOfSession;
     }
 
-    public void setStartOfSession(Time startOfSession) {
+    public void setStartOfSession(LocalTime startOfSession) {
         this.startOfSession = startOfSession;
     }
 
-    public Time getEndOfSession() {
+    public LocalTime getEndOfSession() {
         return endOfSession;
     }
 
-    public void setEndOfSession(Time endOfSession) {
+    public void setEndOfSession(LocalTime endOfSession) {
         this.endOfSession = endOfSession;
     }
 }

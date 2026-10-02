@@ -2,6 +2,7 @@ package com.banditdev.burdenofdreams.model.system;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,10 +21,10 @@ public class Booking {
     @OneToMany
     private List<Session> sessions = new ArrayList<>();
 
-    private Date date;
+    private LocalDate date;
     private double totalPrice;
 
-    public Booking(Long id, String nameOfCustomer, String phoneNumber, String emailOfCustomer, List<Session> sessions, Date date, double totalPrice) {
+    public Booking(Long id, String nameOfCustomer, String phoneNumber, String emailOfCustomer, List<Session> sessions, LocalDate date, double totalPrice) {
         this.id = id;
         this.nameOfCustomer = nameOfCustomer;
         this.phoneNumber = phoneNumber;
@@ -72,11 +73,11 @@ public class Booking {
         this.sessions = sessions;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

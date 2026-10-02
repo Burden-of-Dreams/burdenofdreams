@@ -3,6 +3,9 @@ package com.banditdev.burdenofdreams.model.system;
 import com.banditdev.burdenofdreams.model.user.Employee;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Activity {
 
@@ -13,24 +16,24 @@ public class Activity {
     private String name;
     private String description;
 
-    @ManyToOne
-    private Employee employees;
+    @OneToMany  //skal måske ændress til en manyToMany hvis hver employee kan lave flere forskellige aktiviteter.
+    private List<Employee> employees = new ArrayList<>();
 
     private int ageLimit;
     private int capacity;
     private int durationMinutes;
 
-    @ManyToOne
-    private Equipment equipment;
+    @ManyToMany
+    private List<Equipment> equipment = new ArrayList<>();
 
 
     private double pricePerActivity;
     private double pricePerPerson;
 
-    public Activity(Long id, String name, String description, Employee employees,
-                    int ageLimit, int capacity, int durationMinutes, Equipment equipment,
+    public Activity(String name, String description, List<Employee> employees,
+                    int ageLimit, int capacity, int durationMinutes, List<Equipment> equipment,
                     double pricePerActivity, double pricePerPerson) {
-        this.id = id;
+
         this.name = name;
         this.description = description;
         this.employees = employees;
@@ -50,12 +53,20 @@ public class Activity {
         return id;
     }
 
-    public Employee getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public Equipment getEquipment() {
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public List<Equipment> getEquipment() {
         return equipment;
+    }
+
+    public void setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
     }
 
     public String getName() {
