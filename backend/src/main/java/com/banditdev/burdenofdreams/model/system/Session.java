@@ -36,6 +36,7 @@ public class Session {
     public Session(Activity typeOfActivity, int amountOfCustomers, List<Equipment> reservedEquipment,
                    LocalDate dateOfActivity, LocalTime startOfSession,
                    LocalTime endOfSession, Booking booking) {
+
         this.typeOfActivity = typeOfActivity;
         this.amountOfCustomers = amountOfCustomers;
         this.reservedEquipment = reservedEquipment;

@@ -23,8 +23,7 @@ public class Booking {
     private LocalDate date; //TODO der bør msåke ikke være en attribute her med date, da den findes fra Session. Så vi bryder normalForm 3 ift. database, da vores data kommer fra anden data. Overvej om den skal slettes.
     private double totalPrice;
 
-    public Booking(Long id, String nameOfCustomer, String phoneNumber, String emailOfCustomer, List<Session> sessions, LocalDate date, double totalPrice) {
-        this.id = id;
+    public Booking(String nameOfCustomer, String phoneNumber, String emailOfCustomer, List<Session> sessions, LocalDate date, double totalPrice) {
         this.nameOfCustomer = nameOfCustomer;
         this.phoneNumber = phoneNumber;
         this.emailOfCustomer = emailOfCustomer;
