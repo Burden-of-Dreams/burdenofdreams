@@ -1,14 +1,97 @@
 package com.banditdev.burdenofdreams.model.system;
 
-import java.sql.Time;
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+
+@Entity
 public class Session {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
     private Activity typeOfActivity;
+
     private int amountOfCustomers;
-    private Equipment reservedEquipment;
+
+    @ManyToMany(mappedBy = "")
+    private List<Equipment> reservedEquipment = new ArrayList<>();
+
     private Date dateOfActivity;
     private Time startOfSession;
     private Time endOfSession;
+
+
+    public Session(Long id, Activity typeOfActivity, int amountOfCustomers,
+                   List<Equipment> reservedEquipment, Date dateOfActivity,
+                   Time startOfSession, Time endOfSession) {
+        this.id = id;
+        this.typeOfActivity = typeOfActivity;
+        this.amountOfCustomers = amountOfCustomers;
+        this.reservedEquipment = reservedEquipment;
+        this.dateOfActivity = dateOfActivity;
+        this.startOfSession = startOfSession;
+        this.endOfSession = endOfSession;
+    }
+
+    public Session() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Activity getTypeOfActivity() {
+        return typeOfActivity;
+    }
+
+    public void setTypeOfActivity(Activity typeOfActivity) {
+        this.typeOfActivity = typeOfActivity;
+    }
+
+    public int getAmountOfCustomers() {
+        return amountOfCustomers;
+    }
+
+    public void setAmountOfCustomers(int amountOfCustomers) {
+        this.amountOfCustomers = amountOfCustomers;
+    }
+
+    public List<Equipment> getReservedEquipment() {
+        return reservedEquipment;
+    }
+
+    public void setReservedEquipment(List<Equipment> reservedEquipment) {
+        this.reservedEquipment = reservedEquipment;
+    }
+
+    public Date getDateOfActivity() {
+        return dateOfActivity;
+    }
+
+    public void setDateOfActivity(Date dateOfActivity) {
+        this.dateOfActivity = dateOfActivity;
+    }
+
+    public Time getStartOfSession() {
+        return startOfSession;
+    }
+
+    public void setStartOfSession(Time startOfSession) {
+        this.startOfSession = startOfSession;
+    }
+
+    public Time getEndOfSession() {
+        return endOfSession;
+    }
+
+    public void setEndOfSession(Time endOfSession) {
+        this.endOfSession = endOfSession;
+    }
 }
