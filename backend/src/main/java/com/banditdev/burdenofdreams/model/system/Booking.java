@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,10 +17,10 @@ public class Booking {
     private String phoneNumber;
     private String emailOfCustomer;
 
-    @OneToMany
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
     private List<Session> sessions = new ArrayList<>();
 
-    private LocalDate date;
+    private LocalDate date; //TODO der bør msåke ikke være en attribute her med date, da den findes fra Session. Så vi bryder normalForm 3 ift. database, da vores data kommer fra anden data. Overvej om den skal slettes.
     private double totalPrice;
 
     public Booking(Long id, String nameOfCustomer, String phoneNumber, String emailOfCustomer, List<Session> sessions, LocalDate date, double totalPrice) {

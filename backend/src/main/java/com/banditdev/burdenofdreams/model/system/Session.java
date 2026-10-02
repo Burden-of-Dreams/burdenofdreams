@@ -29,17 +29,20 @@ public class Session {
     private LocalTime startOfSession;
     private LocalTime endOfSession;
 
+    @ManyToOne
+    private Booking booking;
 
-    public Session(Long id, Activity typeOfActivity, int amountOfCustomers,
-                   List<Equipment> reservedEquipment, LocalDate dateOfActivity,
-                   LocalTime startOfSession, LocalTime endOfSession) {
-        this.id = id;
+
+    public Session(Activity typeOfActivity, int amountOfCustomers, List<Equipment> reservedEquipment,
+                   LocalDate dateOfActivity, LocalTime startOfSession,
+                   LocalTime endOfSession, Booking booking) {
         this.typeOfActivity = typeOfActivity;
         this.amountOfCustomers = amountOfCustomers;
         this.reservedEquipment = reservedEquipment;
         this.dateOfActivity = dateOfActivity;
         this.startOfSession = startOfSession;
         this.endOfSession = endOfSession;
+        this.booking = booking;
     }
 
     public Session() {
@@ -95,5 +98,13 @@ public class Session {
 
     public void setEndOfSession(LocalTime endOfSession) {
         this.endOfSession = endOfSession;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
