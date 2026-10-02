@@ -1,4 +1,7 @@
 package com.banditdev.burdenofdreams.repository;
 
-public class ActivityRepository {
+import com.banditdev.burdenofdreams.model.system.Activity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ActivityRepository extends JpaRepository<Activity, Long> {
 }

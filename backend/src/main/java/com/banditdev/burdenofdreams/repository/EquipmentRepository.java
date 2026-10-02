@@ -1,4 +1,4 @@
 package com.banditdev.burdenofdreams.repository;
 
-public class EquipmentRepository {
+public interface EquipmentRepository  {
 }
